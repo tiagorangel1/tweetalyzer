@@ -6,7 +6,9 @@
 <h1>
   tweetalyzer
   </h1>
-Get your Twitter profile analyzed & roasted by a super-smart AI 
+<p>
+  Get your Twitter profile analyzed & roasted by a super-smart AI 
+  </p>
 
 </center>
 

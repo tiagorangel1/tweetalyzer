@@ -1,11 +1,8 @@
 const fetch = require("node-fetch");
 const { rateLimit } = require("express-rate-limit");
-const { Scraper } = require("@the-convocation/twitter-scraper");
 const express = require("express");
 const fs = require("fs");
 const app = express();
-
-const scraper = new Scraper();
 
 const toks = [];
 
@@ -21,8 +18,7 @@ app.set("trust proxy", 4);
 async function gemini(prompt) {
   const r = await (
     await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-8b:generateContent?key=" +
-        process.env.GEMINI_API_KEY,
+      `https://generativelanguage.googleapis.com/v1beta/models/${process.env.GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "content-type": "application/json" },
