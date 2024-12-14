@@ -1,0 +1,27 @@
+{
+  "name": "tweetalyzer",
+  "version": "0.0.1",
+  "description": "AI judges your Twitter",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@the-convocation/twitter-scraper": "^0.14.1",
+    "express": "^4.18.1",
+    "express-rate-limit": "^7.4.1",
+    "node-fetch": "^2.7.0"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/tweetalyzer"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

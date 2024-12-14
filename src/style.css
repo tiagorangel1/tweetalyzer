@@ -1,0 +1,253 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ff4d4d;
+  width: 100vw;
+  background-image: url("https://cdn.glitch.global/cede93c8-43e3-4644-9257-6f277b841e8d/noise-light.png");
+  margin-top: 10em;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  flex-direction: column;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  z-index: 1000;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  width: 510px;
+  max-width: 510px;
+  margin: 0px auto;
+  background-color: white;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: 3px solid #662e2e;
+  height: fit-content;
+  margin-bottom: 40px;
+}
+
+.card h1 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  text-align: center;
+  margin: 0px;
+}
+.input {
+  display: flex;
+  gap: 5px;
+  margin-top: 20px;
+}
+.card input {
+  height: 2.5rem;
+  border-radius: calc(0.5rem - 2px);
+  border: 1px solid hsl(240 5.9% 90%);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: inherit;
+}
+.card button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: white;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: hsl(240 5.9% 10%);
+  height: 2.5rem;
+  border-radius: calc(0.5rem - 2px);
+  border: 1px solid hsl(240 5.9% 90%);
+  font-family: inherit;
+  cursor: pointer;
+}
+.card button:hover {
+  opacity: 0.8;
+}
+.card button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.madeby {
+  margin-bottom: 0px;
+  text-align: center;
+  margin-top: 40px;
+}
+.madeby a {
+  color: black;
+}
+
+.user-info {
+  display: flex;
+  gap: 15px;
+  margin-bottom: -20px;
+}
+.user-info img {
+  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+}
+.card.results {
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+}
+.user-info-text h2 {
+  margin: 0px;
+  font-weight: 400;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+}
+.user-info-text h2 svg {
+  width: 20px;
+  margin-left: 5px;
+}
+.user-info-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.user-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.user-stat-top {
+  display: flex;
+  align-items: center;
+}
+.user-stat-top h4 {
+  margin: 0px;
+  margin-right: auto;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    Liberation Mono, Courier New, monospace;
+}
+.user-stat-top span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.progress-bar .bar {
+  height: 100%;
+  background-color: #ff4d4d;
+}
+.user-text {
+  margin-top: 20px;
+  line-height: 1.5;
+  color: #171717;
+}
+
+.user-rating {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  transform: scale(0.8);
+}
+.user-rating svg {
+  width: 100px;
+  height: 100px;
+}
+.user-rating span {
+  font-size: 3.75rem;
+  font-family: Caveat, cursive, ui-serif, Georgia, Cambria, Times New Roman,
+    Times, serif;
+  color: rgb(255 81 81);
+  position: absolute;
+  top: 13px;
+  left: 28px;
+  user-select: none;
+}
+.loading-bar {
+  height: 8px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  border-radius: 100px;
+  overflow: hidden;
+}
+.loading-bar span {
+  background-color: #ff4d4d;
+  height: 100%;
+  animation: load 5s infinite linear;
+  display: block;
+}
+
+.loading_text {
+  text-align: center;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+  95% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+.nodeWrapper {
+  background-color: #ff4d4d;
+  background-image: url("https://cdn.glitch.global/cede93c8-43e3-4644-9257-6f277b841e8d/noise-light.png");
+  width: fit-content;
+  padding: 50px 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.nodeWrapper .getown {
+  color: white;
+}
+.nodeWrapper .getown u {
+  font-weight: 500;
+  text-decoration-color: rgba(255, 255, 255, .5)
+}
+.card button.share {
+  width: fit-content;
+  margin: auto;
+    margin-top: auto;
+  margin-top: 20px;
+  border-radius: 100px;
+  padding: .5rem 1.5rem;
+}
