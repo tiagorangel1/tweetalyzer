@@ -59,7 +59,7 @@ button.addEventListener("click", async function () {
   
   <div class="user-info">
   <img alt="profile picture" src="/pfp_proxy?url=${encodeURIComponent(
-    result.user.profile_image_url_https
+    result.user.avatar_url
   )}">
   <div class="user-info-text">
   <h2>${Safe(result.user.name)} ${
