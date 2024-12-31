@@ -27,35 +27,42 @@
         Get your Twitter profile analyzed &amp; roasted by a super-smart AI
       </h1>
       <div class="input">
-        <input placeholder="Twitter username" />
-        <button>Analyze &amp; roast</button>
+        <input placeholder="Twitter username (e.g. @elonmusk)" />
+        <button data-umami-event="roast">analyze &amp; roast</button>
       </div>
       <p class="madeby">
-        Made by
+        made by
         <a
           href="https://x.com/tiagorangel23"
           onclick="try{window.open('https://x.com/intent/follow?user_id=1340268334785376258&screen_name=tiagorangel23')}catch{return true;};return false;"
           rel="me follow noopener"
-          target="_blank"
+          target="_blank" data-umami-event="twt-click"
           >Tiago Rangel</a
         >
         ·
         <a
-          href="https://github.com/tiagorangel1/tweetalyzer"
+          href="https://glitch.com/edit/#!/tweetalyzer"
           target="_blank"
-          rel="nofollow opener"
-          >Github</a
-        >
+          rel="nofollow opener" data-umami-event="oss-click"
+          >source code</a
+        ><br><span id="usage"></span>
       </p>
     </div>
     <div class="card results" style="display: none"></div>
-    <div style="position:fixed;bottom:20px;left:20px;transition: opacity .2s, transform .2s;opacity: .5;" class="trypcom">
-      <a href="https://tryp.com/?source=x" target="_blank" rel="nofollow"><img src="/assets/aa.svg" style="width: 180px;max-width:100%;filter:drop-shadow(0 0 0.75rem rgba(0, 0, 0, .7)) drop-shadow(0 0 0.75rem rgba(0, 0, 0, .1)) drop-shadow(0 0 1rem rgba(0, 0, 0, .1))"></a>
+      <p class="disclaimer">
+        warning: this is supposed to make fun of you, don't use it if you have suicidal thoughts. i'm not responsable for this ai.<br><a href="https://x.com/messages/compose?recipient_id=1340268334785376258" target="_blank">report issue</a> <a href="javascript:" data-feeeedback>send feedback</a>
+      </p>
+    <div style="position:fixed;bottom:20px;left:20px;transition: opacity .2s, transform .2s;opacity: .8;background-color:rgba(0, 0, 0, .1);padding:5px 10px;border-radius:10px;" class="trypcom">
+      <a href="https://tryp.com/?source=x" target="_blank" rel="nofollow" data-umami-event="tryp-click"><img src="/assets/aa.svg" style="width: 200px;max-width:100%;filter:drop-shadow(0 0 0.75rem rgba(0, 0, 0, .7)) drop-shadow(0 0 0.75rem rgba(0, 0, 0, .1)) drop-shadow(0 0 1rem rgba(0, 0, 0, .1))"></a>
       <style>.trypcom:hover {opacity: 1!important;transform:scale(1.01)}</style>
     </div>
   </body>
 
+  
+  <script defer src="https://uma.tiagorangel.com/script.js" data-website-id="0a544d6a-f092-4eb4-b3d2-9ac99276eb91"></script>
   <!-- hey there, pls don't remove this; it lets me measure
        how my projects and their forks are doing. -->
   <script src="//tiagorangel.com/cdn/widget.js"></script>
+  <script src="https://feeeedback.glitch.me/f.js" defer pid="570f20cc9e1b60932fafb2ea37c24279:d70957ae5e783cae8cb24487f2d14555a344f27993605adf94732f0ec4bfc5a7b5f1059221666c23c6b47ea65eeefa7cd14b9f36a5f7c5e3ccfad1db3c6eca86cc6649873fcd16f1eb42850d9645cdb73b3dd6748ecfc05e6a883de239b8401df36e163dc8882f5f42aadf49ffe44566e746bcf6ac87d5c89840f1a1856f7e7d"></script>
+
 </html>

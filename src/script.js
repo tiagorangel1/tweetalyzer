@@ -26,7 +26,7 @@ input.addEventListener("input", function (e) {
 });
 
 button.addEventListener("click", async function () {
-  const q = input.value.trim().replace("@", "");
+  const q = input.value.trim().replace("@", "").replaceAll("https://x.com/", "").replaceAll("http://x.com/", "").split("?")[0];
 
   if (!q) {
     return;
@@ -48,22 +48,24 @@ button.addEventListener("click", async function () {
       }),
     })
   ).json();
+  
+  up();
 
   if (result.error) {
     button.disabled = false;
-    results.innerHTML = `<p style="text-align: center">An error occured</p>`;
+    results.innerHTML = `<p style="text-align: center">An error occurred. <b>Please try again</b> (there is a high chance this will work due to the model randomizer)</p>`;
   }
 
   button.disabled = false;
   results.innerHTML = `
   
   <div class="user-info">
-  <img alt="profile picture" src="/pfp_proxy?url=${encodeURIComponent(
-    result.user.avatar_url
+  <img alt="profile picture" src="https://corsproxy.io/?url=${encodeURIComponent(
+    result?.user?.avatar_url
   )}">
   <div class="user-info-text">
-  <h2>${Safe(result.user.name)} ${
-    result.user.verified
+  <h2>${Safe(result?.user?.name || "Unknown")} ${
+    result?.user?.verified
       ? `<svg viewBox="0 0 22 22"><g><path d="M20.396 11c-.018-.646-.215-1.275-.57-1.816-.354-.54-.852-.972-1.438-1.246.223-.607.27-1.264.14-1.897-.131-.634-.437-1.218-.882-1.687-.47-.445-1.053-.75-1.687-.882-.633-.13-1.29-.083-1.897.14-.273-.587-.704-1.086-1.245-1.44S11.647 1.62 11 1.604c-.646.017-1.273.213-1.813.568s-.969.854-1.24 1.44c-.608-.223-1.267-.272-1.902-.14-.635.13-1.22.436-1.69.882-.445.47-.749 1.055-.878 1.688-.13.633-.08 1.29.144 1.896-.587.274-1.087.705-1.443 1.245-.356.54-.555 1.17-.574 1.817.02.647.218 1.276.574 1.817.356.54.856.972 1.443 1.245-.224.606-.274 1.263-.144 1.896.13.634.433 1.218.877 1.688.47.443 1.054.747 1.687.878.633.132 1.29.084 1.897-.136.274.586.705 1.084 1.246 1.439.54.354 1.17.551 1.816.569.647-.016 1.276-.213 1.817-.567s.972-.854 1.245-1.44c.604.239 1.266.296 1.903.164.636-.132 1.22-.447 1.68-.907.46-.46.776-1.044.908-1.681s.075-1.299-.165-1.903c.586-.274 1.084-.705 1.439-1.246.354-.54.551-1.17.569-1.816zM9.662 14.85l-3.429-3.428 1.293-1.302 2.072 2.072 4.4-4.794 1.347 1.246z"></path></g></svg>`
       : ""
   }</h2>
@@ -75,97 +77,97 @@ button.addEventListener("click", async function () {
 <path d="M165.275 14.6232C164.128 14.6232 162.973 14.616 161.81 14.6028C156.789 12.5407 152.83 10.5566 149.783 8.11887C145.471 4.66877 139.178 5.36797 135.728 9.6806C134.716 10.945 134.061 12.3783 133.75 13.8599C122.348 13.6598 110.544 13.885 99.1201 15.7153C85.732 17.8604 67.8138 22.1032 51.3543 29.2899C35.2178 36.3355 18.7059 46.9779 10.6217 62.9389C3.75733 76.4916 4.86117 91.5935 8.61419 104.575C12.3977 117.662 19.2264 129.909 25.7534 138.993C42.7502 162.648 71.0679 175.166 100.453 170.149C122.604 166.367 143.975 150.621 158.533 138.293C171.921 126.957 185.235 112.94 194.704 97.1595C198.57 90.7165 202.9 82.2611 205.329 73.2233C207.735 64.2721 208.586 53.5562 203.857 43.6016C199.406 34.2301 192.153 28.4203 184.802 24.367C181.21 22.3864 177.382 20.7195 173.706 19.2445C171.931 16.4677 168.823 14.6232 165.275 14.6232Z" stroke="white" stroke-width="10" stroke-linecap="round"/>
 </svg>
 
-  <span>${Safe(result.result.profile_rating.toUpperCase())}</span>
+  <span>${Safe(result?.result?.profile_rating?.toUpperCase() || "?")}</span>
   </div>
   </div>
   <div class="user-text">
-  <p>${Safe(result.result.roast).replaceAll("[NL]", "</p><p>")}</p>
+  <p>${Safe(result?.result?.roast || "No roast available").replaceAll("[NL]", "</p><p>")}</p>
   </div>
   <div class="user-stats">
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>IQ</h4>
-  <span>${result.result.estimated_iq}</span>
+  <span>${result?.result?.estimated_iq}</span>
   </div>
     <div class="progress-bar"><div class="bar" style="width: ${
-      (result.result.estimated_iq / 250) * 100
+      (result?.result?.estimated_iq / 250) * 100
     }%"></div></div>
 
     </div>
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Estimated age</h4>
-  <span>${result.result.estimated_age}</span>
+  <span>${result?.result?.estimated_age}</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    (result.result.estimated_age / 60) * 100
+    (result?.result?.estimated_age / 60) * 100
   }%"></div></div>
   </div>
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Aura points</h4>
-  <span>${result.result.estimated_aura}</span>
+  <span>${result?.result?.estimated_aura}</span>
   </div>
   
   
     <div class="progress-bar"><div class="bar" style="width: ${
-      (result.result.estimated_aura / 5000) * 100
+      (result?.result?.estimated_aura / 5000) * 100
     }%"></div></div>
   </div>
   
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Gay level</h4>
-  <span>${result.result.estimated_gay_level}%</span>
+  <span>${result?.result?.estimated_gay_level}%</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    result.result.estimated_gay_level
+    result?.result?.estimated_gay_level
   }%"></div></div>
   </div>
   
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Brainrot level</h4>
-  <span>${result.result.estimated_brainrot_level}%</span>
+  <span>${result?.result?.estimated_brainrot_level}%</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    result.result.estimated_brainrot_level
+   result?.result?.estimated_brainrot_level
   }%"></div></div>
   </div>
   
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Sigma level</h4>
-  <span>${result.result.estimated_sigma_level}%</span>
+  <span>${result?.result?.estimated_sigma_level}%</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    result.result.estimated_sigma_level
+    result?.result?.estimated_sigma_level
   }%"></div></div>
   </div>
   
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Twitter addiction</h4>
-  <span>${result.result.estimated_addiction_level}%</span>
+  <span>${result?.result?.estimated_addiction_level}%</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    result.result.estimated_addiction_level
+    result?.result?.estimated_addiction_level
   }%"></div></div>
   </div>
   
   <div class="user-stat">
   <div class="user-stat-top">
   <h4>Introvert level</h4>
-  <span>${result.result.estimated_introvert}%</span>
+  <span>${result?.result?.estimated_introvert}%</span>
   </div>
   
   <div class="progress-bar"><div class="bar" style="width: ${
-    result.result.estimated_introvert
+    result?.result?.estimated_introvert
   }%"></div></div>
   </div>
   
@@ -251,3 +253,11 @@ button.addEventListener("click", async function () {
 });
 
 input.focus();
+
+const up = async function () {
+    const cc = await (await fetch("https://tweetalyzer.glitch.me/usage")).json();
+    document.querySelector("#usage").innerText = `used by ${cc.count.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ')} ppl so far`
+}
+
+up();
+setInterval(up, 5000)
