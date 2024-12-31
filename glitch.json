@@ -1,0 +1,23 @@
+{
+  "install": "python3 narflinger.py && bun install",
+  "start": "bun run start",
+  "watch": {
+    "install": {
+      "include": [
+        "^package\\.json$"
+      ]
+    },
+    "restart": {
+      "exclude": [
+        "^public/",
+        "^dist/"
+      ],
+      "include": [
+        "^\\.env$",
+        "\\.js$",
+        "\\.json$"
+      ]
+    },
+    "throttle": 500
+  }
+}

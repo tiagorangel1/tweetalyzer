@@ -13,6 +13,7 @@ body {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -25,10 +26,11 @@ body {
   margin: auto;
   z-index: 1000;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  display: none;
 }
 
 .card {
-  width: 510px;
+  width: 100%;
   max-width: 510px;
   margin: 0px auto;
   background-color: white;
@@ -54,6 +56,7 @@ body {
   display: flex;
   gap: 5px;
   margin-top: 20px;
+  justify-content: center;
 }
 .card input {
   height: 2.5rem;
@@ -66,6 +69,9 @@ body {
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-family: inherit;
+}
+.card input:focus {
+  outline: 2px solid black;
 }
 .card button {
   font-size: 0.875rem;
@@ -97,6 +103,21 @@ body {
 }
 .madeby a {
   color: black;
+}
+
+.disclaimer {
+  font-size: 10px;
+  text-align: center;
+  opacity: .6;
+  max-width: 300px;
+  width: 100%;
+  color: white;
+  margin: 10px auto;
+  margin-top: 28px;
+}
+
+.disclaimer a {
+  color: white;
 }
 
 .user-info {
@@ -250,4 +271,29 @@ body {
   margin-top: 20px;
   border-radius: 100px;
   padding: .5rem 1.5rem;
+}
+@media only screen and (max-width: 480px) {
+  .input {
+    flex-direction: column;
+  }
+  .input button, .input button {
+    width: 100%;
+  }
+  .card {
+    
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+span#usage {
+    margin-top: 5px;
+    display: block;
+    opacity: .6;
+}
+
+@media only screen and (max-width: 600px) {
+  .trypcom {
+    bottom: 10px !important;
+    left: 10px !important;
+}
 }
