@@ -404,6 +404,8 @@ const generateTemplate = async function (req, res) {
     gunzip(data, (err, result) => (err ? reject(err) : resolve(result)))
   );
 
+  fetch(`https://abacus.jasoncameron.dev/hit/tweetalyzer2/${id}`)
+
   const templatefile = await fs.promises.readFile(
     "./src/view/index.html",
     "utf-8"
