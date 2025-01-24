@@ -1,11 +1,11 @@
-<center>
+<div align="center">
 
 <img src="https://assets-store.glitch.me/twtlyzer.svg" width="50">    
 
 **Tweetalyzer 2**  
 Your Twitter analyzed, cooked & roasted by AI
 
-</center>
+</div>
 
 ***
 
