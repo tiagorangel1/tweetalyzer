@@ -343,6 +343,10 @@ button.follow span {
 
 .bottom-links {
   margin-top: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .bottom-links button {
@@ -352,6 +356,7 @@ button.follow span {
   border: none;
   color: hsl(240 5.9% 10%);
   font-size: 13px;
+  padding: 0px;
 }
 
 .bottom-links a {
