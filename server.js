@@ -433,17 +433,6 @@ app.get("/api/pfps", function (req, res) {
   res.json({ pfps: shuffled.slice(0, 3) });
 });
 
-app.get("/admin", function (req, res) {
-  if (req.query.key !== process.env.ADMIN_KEY) {
-    res.json({ ok: false })
-  }
-  
-  res.set("Content-Type", "text/html");
-  res.send(fs.readdirSync('./.data/results').filter(f => f.endsWith('.json')).map((e, i) => {
-    return `#${i} <a href="/${e.replace(".json", "")}">${e}</a>`
-  }).join("<br>"))
-})
-
 app.post('/api/challenge', (req, res) => {
   res.json(cap.createChallenge());
 });
@@ -459,6 +448,6 @@ app.post('/api/redeem', async (req, res) => {
 app.get("/results/:id", generateTemplate);
 app.get("/:id", generateTemplate);
 
-const listener = app.listen(5551, function () {
+const listener = app.listen(process.env.PORT || 5551, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });

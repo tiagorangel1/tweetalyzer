@@ -1,7 +1,7 @@
 {
   "name": "tweetalyzer",
   "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "description": "Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI",
   "main": "server.js",
   "scripts": {
     "start": "bun run server.js",
@@ -14,16 +14,11 @@
     "express": "^4.21.2",
     "express-slow-down": "^2.0.3"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://github.com/tiagorangel1/tweetalyzer"
   },
-  "license": "MIT",
+  "license": "AGPLv3",
   "keywords": [
-    "node",
-    "glitch",
-    "express"
+    "twitter"
   ]
 }
