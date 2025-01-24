@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <title>
+      Tweetalyzer 2 — Your Twitter analyzed, cooked &amp; roasted by AI
+    </title>
+    <meta
+      name="title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      name="description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://twt.tiagorangel.com/" />
+    <meta
+      property="og:title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      property="og:description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.global/b193c4ed-2102-49f8-9c27-be56f3e860ad/og.png"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://twt.tiagorangel.com/" />
+    <meta
+      property="twitter:title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      property="twitter:description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+    <meta
+      property="twitter:image"
+      content="https://cdn.glitch.global/b193c4ed-2102-49f8-9c27-be56f3e860ad/og.png"
+    />
+
+    <link id="favicon" rel="icon" href="/fav.svg" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="dark">
+    <a href="/" class="name">Tweetalyzer</a>
+
+    <article class="main">
+      <h1>
+        Your Twitter analyzed,<br />
+        cooked &amp; roasted by AI
+      </h1>
+      <p>
+        Get your Twitter profile fully analyzed &amp; roasted<br />
+        by an even smarter AI!
+      </p>
+      <div class="form" onclick="this.querySelector('input').focus()">
+        <label>Twitter username</label>
+        <input placeholder="@elonmusk" />
+      </div>
+
+      <cap-widget id="floating" data-cap-api-endpoint="/api/"></cap-widget>
+
+      <button
+        disabled
+        class="submit"
+        data-cap-floating="#floating"
+        data-cap-floating-position="bottom"
+      >
+        Create now
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-chevron-right w-4 h-4 shrink-0"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </button>
+
+      <p class="people">
+        <span class="pfps"></span><b>100k+</b> profiles analyzed so far
+      </p>
+
+      <button
+        class="follow"
+        onclick="window.open('https://x.com/tiagorangel23','_blank');"
+        style="margin-top: 20px"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          ></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide-check"
+          style="display: none"
+        >
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Made by @tiagorangel23
+      </button>
+
+      <div class="bottom-links">
+        <button data-feeeedback>Send feedback</button>
+        <a href="/disclaimer.html">Legal</a>
+      </div>
+    </article>
+
+    <article class="loader" style="display: none">
+      <h1 class="loader-title">
+        We're analyzing your<br />
+        profile. This might take a while.
+      </h1>
+      <div class="loading-wrap">
+        <div class="loading-bar"><span></span></div>
+        <p class="loading_text">Searching for your profile...</p>
+      </div>
+
+      <button
+        class="follow"
+        onclick="window.open('https://x.com/intent/follow?screen_name=tiagorangel23','_blank');"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          ></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide-check"
+          style="display: none"
+        >
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Follow me on Twitter <span>FREE</span>
+      </button>
+    </article>
+
+    <article class="error" style="display: none">
+      <p>
+        Sorry, but we couldn't find your account. Make sure your handle is
+        correct
+      </p>
+      <button class="back">Go back</button>
+    </article>
+
+    <div class="credits">
+      <p>Special thanks to:</p>
+      <div class="thanks-grid">
+        <a href="https://twitterapi.io" target="_blank">
+          <img src="/assets/twapi.svg" style="height:20px">
+          <p>Twitter API</p>
+        </a>
+        <a href="https://tryp.com/?source=x" target="_blank">
+          <img src="/assets/tryp.svg" style="height: 25px;">
+          <p>AI models</p>
+        </a>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@cap.js/widget"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@cap.js/widget/cap-floating.min.js"></script>
+
+  <script src="/script.js"></script>
+  <script src="//tiagorangel.com/cdn/widget.js"></script>
+
+  <script
+    defer
+    src="https://uma.tiagorangel.com/script.js"
+    data-website-id="13c0d076-70a4-4461-b1f5-fd96c9c6fbe5"
+  ></script>
+  <script
+    src="https://feeeedback.glitch.me/f.js"
+    defer
+    pid="94619bd4a1ef4dd3c74780c440184fe1:5d64c317bf53ce4af67deee594671ca43f8403abb11670d648d64d98927e9d217b6f0fac6a5bf2e0175adb86f521124668504fab66dfa590f2cd60ea3b4a424a44e9e1a0518d923e987e1106fbc51ff3920ceb375af7bd3aef06a083fd397b69393a06c6ab1753cfa738b4a97080d9df5d083c47ed3814aef321ddc503592aea"
+  ></script>
+</html>

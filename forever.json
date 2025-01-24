@@ -1,0 +1,10 @@
+{
+    "uid": "tweetalyzer",
+    "append": true,
+    "script": "server.js",
+    "command": "bun",
+    "sourceDir": "/home/pi/Desktop/tweetalyzer",
+    "logFile": "/home/pi/Desktop/tweetalyzer/logs/forever.log",
+    "outFile": "/home/pi/Desktop/tweetalyzer/logs/out.log",
+    "errFile": "/home/pi/Desktop/tweetalyzer/logs/error.log"
+}

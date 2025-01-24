@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A cool thing made with Glitch" />
+
+    <title>
+      %%name%%'s tweetalyzer results — Your Twitter analyzed, cooked &amp;
+      roasted by AI
+    </title>
+    <meta
+      name="title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      name="description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://twt.tiagorangel.com" />
+    <meta
+      property="og:title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      property="og:description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.global/b193c4ed-2102-49f8-9c27-be56f3e860ad/og.png"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://twt.tiagorangel.com/" />
+    <meta
+      property="twitter:title"
+      content="Tweetalyzer 2 — Your Twitter analyzed, cooked & roasted by AI"
+    />
+    <meta
+      property="twitter:description"
+      content="Get your Twitter profile fully analyzed & roasted by an even smarter AI! Tweetalyzer's AI generates a smart, detailed analysis of your Twitter profile, complete with insights and fun roasts to share with your followers."
+    />
+    <meta
+      property="twitter:image"
+      content="https://cdn.glitch.global/b193c4ed-2102-49f8-9c27-be56f3e860ad/og.png"
+    />
+
+    <link id="favicon" rel="icon" href="/fav.svg" />
+    <link rel="stylesheet" href="/view/style.css" />
+  </head>
+  <body class="dark" data-disable-widget>
+    <a href="/" class="name">Tweetalyzer</a>
+    <div class="share floating-share" results-only>
+      <input readonly />
+      <button>Share</button>
+    </div>
+
+    <button class="createown" share-only onclick="window.open('/', '_blank')">
+      Create your own for free
+    </button>
+
+    <div class="card user">
+      <a href="https://x.com/%%username%%">
+      <img alt="User avatar" data-contents="user.pfp" data-set="src" /></a>
+      <div class="details">
+        <h1 data-contents="user.name" data-set="innerText"></h1>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <span class="followers-count"></span>
+          followers
+        </div>
+        <div class="badge">
+          <span
+            class="following-count"
+            data-contents="user.following"
+            data-set="innerText"
+          ></span>
+          following
+        </div>
+      </div>
+
+      <div class="about">
+        <p share-only>
+          Tweetalyzer's AI analyzed @<span
+            data-contents="user.username"
+            data-set="innerText"
+          ></span
+          >'s Twitter profile — here's what it thought of them. Enjoy!
+        </p>
+        <p results-only>
+          Tweetalyzer's AI analyzed your Twitter profile — here's what it
+          thought of you. Enjoy!
+        </p>
+        <button class="cta-btn share-on-twitter" results-only>
+          Share on twitter
+        </button>
+        <a href="/" class="cta-btn" share-only> Create your own </a>
+      </div>
+    </div>
+
+    <div class="card followme">
+      <p>Follow me on Twitter for more cool tools!</p>
+      <button
+        class="follow"
+        onclick="window.open('https://x.com/intent/follow?screen_name=tiagorangel23', '_blank');"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+          ></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide-check"
+          style="display: none"
+        >
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+        Follow me on Twitter <span>FREE</span>
+      </button>
+    </div>
+
+    <div class="card roast">
+      <p
+        results-only
+        style="
+          color: black;
+          text-align: center;
+          margin-top: 00px;
+          margin-bottom: 20px;
+          font-size: 14px;
+          opacity: 0.8;
+        "
+      >
+        screenshot cool sections and share on twitter :D
+      </p>
+
+      <h2>Roast</h2>
+      <p data-contents="llm.roast" data-set="innerText"></p>
+    </div>
+
+    <div class="card analysis">
+      <h2>Analysis</h2>
+      <div class="analysis-cards">
+        <div class="analysis-card analysis-iq">
+          <div class="header">
+            <h2>IQ</h2>
+            <p
+              data-contents="llm.analysis.iq.estimation"
+              data-set="innerText"
+            ></p>
+          </div>
+          <p class="accuracy">
+            <span
+              data-contents="llm.analysis.iq.accuracy"
+              data-set="innerText"
+            ></span
+            >% accuracy
+          </p>
+        </div>
+
+        <div class="analysis-card analysis-aura">
+          <div class="header">
+            <h2>Aura</h2>
+            <p
+              data-contents="llm.analysis.aura.estimation"
+              data-set="innerText"
+            ></p>
+          </div>
+          <p
+            data-contents="llm.analysis.aura.description"
+            data-set="innerText"
+          ></p>
+          <p class="accuracy">
+            <span
+              data-contents="llm.analysis.aura.accuracy"
+              data-set="innerText"
+            ></span
+            >% accuracy
+          </p>
+        </div>
+
+        <div class="analysis-card analysis-energy">
+          <div class="header">
+            <h2>Energy</h2>
+            <p>
+              <span
+                data-contents="llm.analysis.energy.level"
+                data-set="innerText"
+              ></span
+              >%
+            </p>
+          </div>
+          <p>
+            <span
+              data-contents="llm.analysis.energy.vibe"
+              data-set="innerText"
+            ></span>
+          </p>
+        </div>
+
+        <div class="analysis-card analysis-vibe">
+          <h2>Vibe</h2>
+          <ul>
+            <li
+              data-contents="llm.analysis.vibe.dominant"
+              data-set="innerText"
+            ></li>
+            <li
+              data-contents="llm.analysis.vibe.secondary"
+              data-set="innerText"
+            ></li>
+          </ul>
+          <p class="accuracy">
+            <span
+              data-contents="llm.analysis.vibe.accuracy"
+              data-set="innerText"
+            ></span
+            >% accuracy
+          </p>
+        </div>
+      </div>
+
+      <button class="cta-btn share-on-twitter" results-only>
+        Share on twitter
+      </button>
+      <a href="/" class="cta-btn" share-only> Create your own </a>
+    </div>
+
+    <div class="card closest-characters">
+      <h2>Personality</h2>
+
+      <h3>How you spend your time</h3>
+      <canvas id="timeSpent" style="width: 100%; max-width: 600px"></canvas>
+
+      <h3>Traits</h3>
+      <div class="personality-traits"></div>
+
+      <h3>Interests</h3>
+      <div class="personality-interests"></div>
+    </div>
+
+    <div class="card life-stats">
+      <h2>Life Stats</h2>
+
+      <div class="analysis-cards">
+        <div class="analysis-card analysis-iq">
+          <div class="header">
+            <h2>Age</h2>
+            <p
+              data-contents="llm.life_insights.age.estimation"
+              data-set="innerText"
+            ></p>
+          </div>
+          <p
+            data-contents="llm.life_insights.age.reason"
+            data-set="innerText"
+          ></p>
+          <p class="accuracy">
+            <span
+              data-contents="llm.life_insights.age.accuracy"
+              data-set="innerText"
+            ></span
+            >% accuracy
+          </p>
+        </div>
+
+        <div class="analysis-card analysis-iq">
+          <div class="header">
+            <h2>Estimated death</h2>
+            <p
+              data-contents="llm.life_insights.estimated_death_year"
+              data-set="innerText"
+            ></p>
+          </div>
+        </div>
+
+        <div class="analysis-card analysis-iq">
+          <div class="header">
+            <h2>Followers in a year</h2>
+            <p class="followers-in-a-year"></p>
+          </div>
+        </div>
+        <div class="analysis-card analysis-iq">
+          <div class="header">
+            <h2 style="text-align: center; line-height: 1.1" results-only>
+              Share your Tweetalyzer!
+            </h2>
+            <h2 style="text-align: center; line-height: 1.1" share-only>
+              Create your Tweetalyzer!
+            </h2>
+
+            <button class="cta-btn share-on-twitter" results-only>
+              Share on twitter
+            </button>
+            <a href="/" class="cta-btn" share-only> Create your own </a>
+          </div>
+        </div>
+      </div>
+
+      <h3>Predictions</h3>
+
+      <div class="analysis-cards">
+        <div class="analysis-card analysis-predictions"></div>
+      </div>
+
+      <div class="long-card">
+        <h2>What made you go viral</h2>
+        <p
+          data-contents="llm.life_insights.what_made_viral"
+          data-set="innerText"
+        ></p>
+      </div>
+
+      <div class="long-card">
+        <h2>Biggest failure</h2>
+        <p
+          data-contents="llm.life_insights.biggest_failure"
+          data-set="innerText"
+        ></p>
+      </div>
+
+      <div class="long-card best_quote">
+        <h2>Best quote</h2>
+        <p
+          data-contents="llm.life_insights.best_quote"
+          data-set="innerText"
+        ></p>
+      </div>
+    </div>
+
+    <div class="card more-about">
+      <h2>More about you</h2>
+
+      <div class="long-card">
+        <h2>Dream job</h2>
+        <p data-contents="llm.etc.dream_job" data-set="innerText"></p>
+      </div>
+
+      <div class="long-card">
+        <h2>Secret talent</h2>
+        <p data-contents="llm.etc.secret_talent" data-set="innerText"></p>
+      </div>
+
+      <div class="long-card best_quote">
+        <h2>Weirdest fact</h2>
+        <p data-contents="llm.etc.weirdest_fact" data-set="innerText"></p>
+      </div>
+
+      <div class="long-card best_quote">
+        <h2>Current Arc</h2>
+        <p data-contents="llm.etc.current_arc" data-set="innerText"></p>
+      </div>
+    </div>
+
+    <div class="card enjoyed-cta" style="margin-bottom: 50px">
+      <h2 style="text-align: center">Enjoyed Tweetalyzer?</h2>
+      <p
+        style="text-align: center; max-width: 400px; margin: auto"
+        results-only
+      >
+        I put a lot of work into making Tweetalyzer work well, so please share
+        it with your followers :)
+      </p>
+
+      <p style="text-align: center; max-width: 400px; margin: auto" share-only>
+        I put a lot of work into making Tweetalyzer work well, so go see your
+        own results — it's free :)
+      </p>
+
+      <button class="cta-btn share-on-twitter" results-only>
+        Share on twitter
+      </button>
+      <a href="/" class="cta-btn" share-only> Create your own </a>
+      <button
+        data-feeeedback
+        style="
+          cursor: pointer;
+          text-decoration: underline;
+          background-color: transparent;
+          border: none;
+          margin-top: 2em;
+        "
+      >
+        Send feedback
+      </button>
+    </div>
+    
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <script>
+    window.RESULTS_DATA = JSON.parse(decodeURIComponent("%%json%%"))
+  </script>
+  <script src="/view/script.js"></script>
+  <script src="//tiagorangel.com/cdn/widget.js"></script>
+  <script
+    defer
+    src="https://uma.tiagorangel.com/script.js"
+    data-website-id="13c0d076-70a4-4461-b1f5-fd96c9c6fbe5"
+  ></script>
+</html>

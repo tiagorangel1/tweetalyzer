@@ -1,0 +1,29 @@
+{
+  "name": "tweetalyzer",
+  "version": "0.0.1",
+  "description": "A simple Node app built on Express, instantly up and running.",
+  "main": "server.js",
+  "scripts": {
+    "start": "bun run server.js",
+    "forever": "forever start ./forever.json",
+    "restart": "forever restart tweetalyzer"
+  },
+  "dependencies": {
+    "@cap.js/server": "^1.0.4",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-slow-down": "^2.0.3"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/hello-express"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}

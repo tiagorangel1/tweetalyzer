@@ -1,0 +1,439 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ff4d4d;
+  width: 100vw;
+  background-image: url("https://cdn.glitch.global/cede93c8-43e3-4644-9257-6f277b841e8d/noise-light.png");
+  margin-top: 5em;
+  font-optical-sizing: auto;
+  flex-direction: column;
+  overflow-x: hidden;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.name {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  padding: 0.75rem;
+  gap: 0.75rem;
+  width: fit-content;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-decoration: none;
+  user-select: none;
+  appearance: none;
+  height: 2rem;
+  transition: opacity 0.25s, color 0.25s, background-color 0.25s,
+    box-shadow 0.25s;
+  background-color: rgba(255, 255, 255, .05);
+  box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.name:hover {
+  background-color: rgba(255, 255, 255, .1);
+  box-shadow: rgba(255, 255, 255, 0.125) 0px 0px 0px 1px inset;
+}
+
+article {
+  max-width: 550px;
+  border-radius: 20px;
+  border: 3px solid #8f2828;
+  margin: 3em auto;
+  padding: 50px 0px;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0px;
+}
+
+h1 img {
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  margin-bottom: -5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+  align-items: start;
+  margin: 0px auto;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom: none;
+  margin-top: 20px;
+  cursor: text;
+  margin-top: 35px;
+}
+
+.form:has(input:focus) {
+  border-color: black;
+}
+
+.form label {
+  margin-top: 8px;
+  margin-left: 8px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "DM Mono", sans-serif;
+  user-select: none;
+  cursor: text;
+}
+
+.form input {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  padding: 8px;
+  padding-top: 3px;
+  font-size: 20px;
+  outline: none;
+  margin-bottom: 4px;
+}
+
+button.submit {
+  background-color: #dc4242;
+  max-width: 280px;
+  width: 100%;
+  border: none;
+  font-family: "DM Mono", sans-serif;
+  text-transform: uppercase;
+  font-size: 16px;
+  padding: 15px 0px;
+  color: white;
+  border-radius: 12px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  cursor: pointer;
+  transition: background-color var(--easing) 0.3s;
+  user-select: none;
+  display: flex;
+  gap: 5px;
+  margin: 0px auto;
+  align-items: center;
+  justify-content: center;
+}
+
+button.submit:hover {
+  background-color: #b23535;
+}
+
+button.submit:disabled {
+  opacity: .4;
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+button.submit svg {
+  display: block;
+  transition: all var(--easing) 0.3s;
+}
+
+button.submit:hover svg {
+  margin-right: -3px;
+  margin-left: 3px;
+}
+
+.people {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.1);
+  background: -webkit-gradient(linear,
+      left top,
+      right top,
+      from(#222),
+      to(#222),
+      color-stop(0.5, #fff));
+  background: -moz-gradient(linear,
+      left top,
+      right top,
+      from(#222),
+      to(#222),
+      color-stop(0.5, #fff));
+  background: gradient(linear,
+      left top,
+      right top,
+      from(#222),
+      to(#222),
+      color-stop(0.5, #fff));
+  -webkit-background-size: 125px 100%;
+  -moz-background-size: 125px 100%;
+  background-size: 125px 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: shimmer;
+  -moz-animation-name: shimmer;
+  animation-name: shimmer;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #222;
+  width: 100%;
+  text-align: center;
+}
+
+.people b {
+  font-weight: 600;
+}
+
+.people .pfps img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  margin-left: -8px;
+  border: 2px solid white;
+}
+
+.people {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.people .pfps {
+  margin-right: 3px;
+}
+
+.loading-wrap {
+  max-width: 500px;
+  margin: 0px auto;
+  padding-bottom: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-bar {
+  height: 8px;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.loading-bar span {
+  background-color: #ff4d4d;
+  height: 100%;
+  animation: load 8s infinite linear;
+  display: block;
+}
+
+.loading_text {
+  text-align: center;
+  margin-top: 14px;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: opacity 0.6s;
+}
+
+h1.loader-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+
+button.follow {
+  margin: 0px auto;
+  margin-bottom: 0px;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background-color: #212121;
+  color: white;
+  font-weight: 500;
+  justify-content: center;
+  transition: transform var(--easing) 0.15s, opacity .15s;
+}
+
+button.follow svg {
+  color: white;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+button.follow:hover {
+  transform: scale(1.03);
+}
+
+button.follow:active {
+  opacity: .8;
+}
+
+button.follow span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 3px 7px;
+  font-size: 11px;
+  border-radius: 50px;
+  margin-left: 5px;
+}
+
+.error p {
+  max-width: 350px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.error button.back {
+  margin: 0px auto;
+  margin-bottom: 0px;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: 500;
+  justify-content: center;
+  margin-top: 10px;
+  transition: transform var(--easing) 0.15s;
+  margin-bottom: 20px;
+}
+
+.error button.back:hover {
+  transform: scale(1.05);
+}
+
+.bottom-links {
+  margin-top: 2em;
+}
+
+.bottom-links button {
+  cursor: pointer;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  color: hsl(240 5.9% 10%);
+  font-size: 13px;
+}
+
+.bottom-links a {
+  text-decoration: underline;
+  color: hsl(240 5.9% 10%);
+  font-size: 13px;
+}
+
+.credits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 60px;
+}
+
+.credits>p {
+  font-size: 15px;
+}
+
+.credits .thanks-grid {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  text-align: center;
+}
+
+.credits .thanks-grid a p {
+  margin-top: 8px;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+.credits .thanks-grid a {
+
+  color: white;
+  text-decoration: none;
+}
+
+.credits .thanks-grid a:first-child {
+  padding-right: 15px;
+  border-right: 1px solid #ffffff3d;
+}
+
+.credits .thanks-grid a:not(:hover) {
+  opacity: .7;
+}
+
+@keyframes load {
+  0% {
+    width: 0%;
+    opacity: 1;
+  }
+
+  95% {
+    width: 100%;
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+
+  100% {
+    background-position: top right;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .card {
+    margin: 5px;
+    max-width: -webkit-fill-available;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+}

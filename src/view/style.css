@@ -1,0 +1,460 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --primary: #ff4d4d;
+  --primary-dark: #8f2828;
+  --text-primary: #131313;
+  --text-secondary: #484747;
+  --card-radius: 16px;
+  --spacing-base: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+.name {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  padding: 0.75rem;
+  gap: 0.75rem;
+  width: fit-content;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-decoration: none;
+  user-select: none;
+  appearance: none;
+  height: 2rem;
+  transition: opacity 0.25s, color 0.25s, background-color 0.25s,
+    box-shadow 0.25s;
+  background-color: rgba(255, 255, 255, .05);
+  box-shadow: rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+.name:hover {
+  background-color: rgba(255, 255, 255, .1);
+  box-shadow: rgba(255, 255, 255, 0.125) 0px 0px 0px 1px inset;
+}
+
+body {
+  background-color: var(--primary);
+  background-image: url("https://cdn.glitch.global/cede93c8-43e3-4644-9257-6f277b841e8d/noise-light.png");
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.card {
+  background: white;
+  border-radius: var(--card-radius);
+  border: 3px solid #8f2828;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin: 20px auto;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.analysis-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.analysis-card {
+  background: #f8f9fa;
+  border-radius: calc(var(--card-radius) - 4px);
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: black;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.user {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.user img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.badge {
+  background: #f8f9fa;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+}
+
+.badge span {
+  font-weight: 600;
+}
+
+.long-card {
+  background: #f8f9fa;
+  border-radius: calc(var(--card-radius) - 4px);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.accuracy {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.accuracy span {
+  font-weight: 500;
+}
+
+.personality-traits,
+.personality-interests {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.emoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.analysis-card .header p {
+  font-size: 3em;
+  margin-top: -30px;
+  margin-bottom: 0px;
+  color: black;
+}
+
+.analysis-card p.accuracy {
+  opacity: 0.7;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+}
+
+.analysis-card p {
+  margin-top: -20px;
+}
+
+.analysis-card.analysis-vibe ul {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.analysis-card.analysis-vibe ul li {
+  font-size: 20px;
+}
+
+.analysis-card.analysis-vibe ul li:last-child {
+  opacity: 0.6;
+  margin-top: -5px;
+}
+
+canvas#timeSpent {
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.personality-traits {
+  margin-bottom: 25px;
+}
+
+.personality-traits > div,
+.personality-interests > div {
+  background: #f8f9fa;
+  border-radius: 14px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.analysis-card.analysis-predictions > div p:not(.accuracy) {
+  margin: 0px;
+  font-size: 20px;
+}
+
+.analysis-card.analysis-predictions > div h2 {
+  font-size: 1rem;
+  margin-bottom: 0px;
+}
+
+.analysis-card.analysis-predictions > div {
+  margin-bottom: 30px;
+}
+
+.long-card h2 {
+  margin-top: 0px;
+  font-size: 1.2rem;
+  margin-bottom: 0px;
+}
+
+.long-card p {
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+.card:not(.card.user),
+.personality-interests > div {
+  position: relative;
+}
+
+.card:not(.card.user)::after:not(.followme),
+.personality-interests > div::after:not(.followme) {
+  content: "twtlyzer.glitch.me";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0.4;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.floating-share {
+  position: fixed;
+  bottom: 30px;
+  z-index: 2947;
+  left: 0px;
+  right: 0px;
+}
+.share {
+  margin: 0px auto;
+  max-width: 300px;
+  border-radius: 100px;
+  background-color: white;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  border: 1px solid rgb(0 0 0 / 8%);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),    0 4px 6px -4px rgba(0, 0, 0, 0.1), 0px 34px 94px -13px rgba(0,0,0,0.38), 0px -40px 94px 6px rgba(0,0,0,0.13);
+  transform: scale(1.1);
+  z-index: 193738;
+}
+
+.share button {
+  background-color: #212121;
+  color: white;
+  border: none;
+  height: 31px;
+  width: 80px;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-right: 4px;
+  transition: transform 0.2s;
+}
+
+.share button:hover {
+  transform: scale(1.03);
+}
+
+.share input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: black;
+  outline: none;
+  padding: 15px;
+  padding-right: 0px;
+}
+
+.cta-btn {
+  font-weight: 500;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: transparent;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+  color: #212121;
+  font-size: 14px;
+  display: block;
+  width: fit-content;
+  margin: auto;
+  margin-top: 2em;
+}
+
+.cta-btn:hover {
+  background-color: #d4d4d4;
+}
+
+button.createown {
+  position: fixed;
+  bottom: 20px;
+  left: 0px;
+  right: 0px;
+  z-index: 19372;
+  width: fit-content;
+  margin: 0px auto;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: none;
+  background-color: #212121;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+button.createown:hover {
+  transform: scale(1.05);
+}
+
+.about {
+  background-color: #F8F9FA;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-top: 2em;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.about p {
+  margin: 0px auto;
+  text-align: center;
+  max-width: 400px;
+}
+
+.about .cta-btn {
+  margin: 0px;
+}
+
+button.follow {
+  margin: 0px auto;
+  margin-bottom: 0px;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background-color: #212121;
+  color: white;
+  font-weight: 500;
+  justify-content: center;
+  transition: transform 0.15s;
+}
+
+button.follow svg {
+  color: white;
+  fill: currentColor;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+button.follow:hover {
+  transform: scale(1.03);
+}
+
+button.follow span {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 3px 7px;
+  font-size: 11px;
+  border-radius: 50px;
+  margin-left: 5px;
+}
+
+.followme p {
+  text-align: center;
+  color: black;
+
+  font-size: 1.5em;
+  max-width: 300px;
+  margin: 0px auto;
+  margin-bottom: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 10px;
+}
+
+.brndr {
+  display: none!important;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .analysis-cards {
+    grid-template-columns: 1fr;
+  }
+}
