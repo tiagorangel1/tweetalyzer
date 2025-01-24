@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "bun run server.js",
-    "forever": "forever start ./forever.json",
-    "restart": "forever restart tweetalyzer"
+    "forever": "/home/pi/.nvm/versions/node/v21.6.2/bin/forever start ./forever.json",
+    "restart": "/home/pi/.nvm/versions/node/v21.6.2/bin/forever restart tweetalyzer"
   },
   "dependencies": {
     "@cap.js/server": "^1.0.4",
