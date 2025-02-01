@@ -17,3 +17,5 @@ Your Twitter analyzed, cooked & roasted by AI
 3. `bun install`
 4. `bun run start`
 5. Server should be running at `localhost:3000`
+
+Tweetalyzer requires a `host` header with the contents of `env.CF_HOST_TOKEN` by default. If you're on Cloudflare Tunnels, you can set the `host` header to the contents of `env.CF_HOST_TOKEN`, else you can just remove the part of the code that checks this.

@@ -19,12 +19,22 @@ let usage = JSON.parse(fs.readFileSync("./.data/usage.json", "utf-8"));
 app.use(express.json());
 
 const limiter = slowDown({
-	windowMs: 15 * 60 * 1000,
-	delayAfter: 5,
-	delayMs: (hits) => hits * 200,
+  windowMs: 15 * 60 * 1000,
+  delayAfter: 5,
+  delayMs: (hits) => hits * 200,
 })
 
-app.use("/api/analyze", limiter)
+app.use("/api/analyze", limiter);
+
+app.use("*", function (req, res, next) {
+  const headers = req.headers;
+
+  if (headers.host !== process.env.CF_HOST_TOKEN) {
+    return res.status(403).send("Forbidden");
+  }
+
+  next();
+})
 
 setTimeout(async function () {
   usage = JSON.parse(fs.readFileSync("./.data/usage.json", "utf-8"));
@@ -40,7 +50,7 @@ app.post("/api/analyze", async function (req, res) {
   const user = req.body.user;
   const token = req.body.token;
   const capRes = await cap.validateToken(token);
-  
+
   if (!capRes.success) {
     console.error(`[${user} ${token}] Invalid cap token`)
     return res.json({
@@ -49,7 +59,7 @@ app.post("/api/analyze", async function (req, res) {
   }
 
   usage.count++;
-  fs.writeFile("./.data/usage.json", JSON.stringify(usage), function () {});
+  fs.writeFile("./.data/usage.json", JSON.stringify(usage), function () { });
 
   if (!user.trim()) {
     console.error(`[${user} ${token}] user not provided`)
@@ -398,30 +408,30 @@ Your reply should ONLY consist of properly formatted JSON. Do NOT wrap it in a c
 
 const generateTemplate = async function (req, res) {
   try {
-  const id = req.params.id;
-  const data = await fs.promises.readFile(`./.data/results/${id}.json`);
-  const unzipped = await new Promise((resolve, reject) =>
-    gunzip(data, (err, result) => (err ? reject(err) : resolve(result)))
-  );
+    const id = req.params.id;
+    const data = await fs.promises.readFile(`./.data/results/${id}.json`);
+    const unzipped = await new Promise((resolve, reject) =>
+      gunzip(data, (err, result) => (err ? reject(err) : resolve(result)))
+    );
 
-  try {
-    fetch(`https://abacus.jasoncameron.dev/hit/${process.env.ABACUS_KEY || "tweetalyzer2"}/${id}`)
-  } catch {}
+    try {
+      fetch(`https://abacus.jasoncameron.dev/hit/${process.env.ABACUS_KEY || "tweetalyzer2"}/${id}`)
+    } catch { }
 
-  const templatefile = await fs.promises.readFile(
-    "./src/view/index.html",
-    "utf-8"
-  );
+    const templatefile = await fs.promises.readFile(
+      "./src/view/index.html",
+      "utf-8"
+    );
 
-  res.set("Content-Type", "text/html");
-  res.send(
-    templatefile
-      .toString()
-      .replace("%%json%%", encodeURIComponent(JSON.stringify(JSON.parse(unzipped.toString()))))
-      .replace("%%username%%", JSON.parse(unzipped.toString()).user?.username?.split('<')?.join('')?.split('>')?.join(''))
-      .replace("%%name%%", JSON.parse(unzipped.toString()).user?.name?.split('<')?.join('')?.split('>')?.join(''))
-  );
-} catch { res.redirect("/")}
+    res.set("Content-Type", "text/html");
+    res.send(
+      templatefile
+        .toString()
+        .replace("%%json%%", encodeURIComponent(JSON.stringify(JSON.parse(unzipped.toString()))))
+        .replace("%%username%%", JSON.parse(unzipped.toString()).user?.username?.split('<')?.join('')?.split('>')?.join(''))
+        .replace("%%name%%", JSON.parse(unzipped.toString()).user?.name?.split('<')?.join('')?.split('>')?.join(''))
+    );
+  } catch { res.redirect("/") }
 };
 
 app.get("/api/usage", function (req, res) {
