@@ -344,7 +344,7 @@ Your reply should ONLY consist of properly formatted JSON. Do NOT wrap it in a c
                   },
                   required: ["time_spent", "interests", "traits"],
                 },
-                etc: {
+                moreyou: {
                   type: "object",
                   properties: {
                     dream_job: { type: "string" },
@@ -366,7 +366,7 @@ Your reply should ONLY consist of properly formatted JSON. Do NOT wrap it in a c
                 "comparisons",
                 "life_insights",
                 "personality",
-                "etc",
+                "moreyou",
               ],
             },
           },
