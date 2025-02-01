@@ -439,7 +439,7 @@ app.get("/api/pfps", function (req, res) {
 
 app.post('/api/challenge', (req, res) => {
   res.json(cap.createChallenge({
-    challengeCount: 24,
+    challengeCount: 64,
     challengeSize: 64,
     challengeDifficulty: 3
   }));
