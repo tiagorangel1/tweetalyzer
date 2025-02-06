@@ -4,11 +4,19 @@ const { gunzip, gzip } = require("zlib");
 const Cap = require('@cap.js/server');
 const crypto = require("crypto");
 const fs = require("fs");
+const cors = require("cors");
 const app = express();
 
 require('dotenv').config();
 
-app.set("trust proxy", 4)
+app.set("trust proxy", 4);
+
+app.use(
+  cors({
+    origin: "https://twt.tiagorangel.com",
+    credentials: true,
+  })
+);
 
 const cap = new Cap({
   tokens_store_path: '.data/tokensList.json'
@@ -124,6 +132,12 @@ app.post("/api/analyze", async function (req, res) {
   const userData = tweets.find((tweet) => {
     return !!tweet?.author;
   })?.author;
+
+  if (!userData) {
+    return res.json({
+      invalidUser: true,
+    });
+  }
 
   const id = crypto.randomUUID().split("-")[1];
 

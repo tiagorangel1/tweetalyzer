@@ -8,15 +8,15 @@ function formatNumber(num) {
   } else if (num >= 1e3) {
     return (num / 1e3).toFixed(1) + 'k';
   } else {
-    return num.toString();
+    return num?.toString();
   }
 }
 
 const results = window.RESULTS_DATA;
 
-document.querySelector(".following-count").innerText = formatNumber(results.user.following)
-document.querySelector(".followers-count").innerText = formatNumber(results.user.followers)
-document.querySelector(".followers-in-a-year").innerText = formatNumber(results.llm.life_insights.follower_estimation)
+document.querySelector(".following-count").innerText = formatNumber(results.user?.following)
+document.querySelector(".followers-count").innerText = formatNumber(results.user?.followers)
+document.querySelector(".followers-in-a-year").innerText = formatNumber(results.llm.life_insights?.follower_estimation)
 
 document.querySelectorAll("[data-contents]").forEach((el) => {
   const path = el.getAttribute("data-contents").split(".");
