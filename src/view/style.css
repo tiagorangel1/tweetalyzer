@@ -445,6 +445,23 @@ button.follow span {
   display: none!important;
 }
 
+.links {
+  margin-top: 2em;
+  display: flex;
+  gap: .5em;
+  align-items: center;
+  justify-content: center;
+}
+
+.links a, .links button {
+  cursor: pointer;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  color: #212121;
+  font-size: 13px;
+}
+
 @media (max-width: 768px) {
   body {
     padding: 1rem;

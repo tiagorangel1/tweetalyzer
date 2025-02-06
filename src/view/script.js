@@ -167,3 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(card);
   });
 });
+
+document.querySelector("#report").href = `https://docs.google.com/forms/d/e/1FAIpQLSc7-VIDsXKp2NvPxt3A2C1TPmIdRAcA5HwRB1KaM6ZLkBdqZg/viewform?usp=pp_url&entry.1669450139=${location.href}`

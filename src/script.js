@@ -68,7 +68,7 @@ elements.input.addEventListener("input", (e) => {
     elements.submit.disabled = false;
     return;
   }
-    elements.submit.disabled = true;
+  elements.submit.disabled = true;
 });
 
 document.querySelector(".error .back").addEventListener("click", function () {
@@ -105,7 +105,7 @@ document.querySelector("#floating").addEventListener("solve", async function (e)
       }),
     })
   ).json();
-  
+
   clearInterval(loaderInterval);
   elements.loader.style.display = "none";
 
@@ -121,3 +121,41 @@ document.querySelector("#floating").addEventListener("solve", async function (e)
 
   location.href = `/results/${results.id}`;
 })
+
+async function fetchAuraBoard() {
+  const data = await (await fetch('https://corsproxy.io/?url=https://twt.tiagorangel.com/api/auraboard')).json();
+
+  document.querySelector('#updated').innerHTML = `Last updated ${data.updated}<br>(updates every hour)`;
+  renderList('#top', data.top);
+  renderList('#worst', data.worst);
+}
+
+function renderList(selector, items) {
+  const container = document.querySelector(selector);
+  container.innerHTML = '';
+
+  items.forEach(({ link, pfp, username, aura }) => {
+    const el = document.createElement('a');
+    el.href = `https://twt.tiagorangel.com${link}`;
+    el.target = '_blank';
+    el.className = 'user';
+
+    const img = document.createElement('img');
+    img.src = pfp;
+    img.alt = username;
+    img.addEventListener('error', () => {
+      img.src = "/assets/nopfp.svg"
+    });
+
+    const name = document.createElement('p');
+    name.textContent = username;
+
+    const auraSpan = document.createElement('span');
+    auraSpan.textContent = `${aura} aura`;
+
+    el.append(img, name, auraSpan);
+    container.appendChild(el);
+  });
+}
+
+fetchAuraBoard();

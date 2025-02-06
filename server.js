@@ -423,6 +423,10 @@ Your reply should ONLY consist of properly formatted JSON. Do NOT wrap it in a c
 const generateTemplate = async function (req, res) {
   try {
     const id = req.params.id;
+
+    if (["a94f"].includes(id)) {
+      return res.status(403).send("This result has been removed due to violation of ToS.");
+    }
     const data = await fs.promises.readFile(`./.data/results/${id}.json`);
     const unzipped = await new Promise((resolve, reject) =>
       gunzip(data, (err, result) => (err ? reject(err) : resolve(result)))
@@ -461,7 +465,43 @@ app.get("/api/pfps", function (req, res) {
   res.json({ pfps: shuffled.slice(0, 3) });
 });
 
-app.post('/api/challenge', (req, res) => {
+app.get("/api/auraboard", (req, res) => {
+  function timeAgo(timestamp) {
+    const seconds = Math.floor((Date.now() - timestamp) / 1000);
+    const intervals = [
+      { label: "year", seconds: 31536000 },
+      { label: "month", seconds: 2592000 },
+      { label: "day", seconds: 86400 },
+      { label: "hour", seconds: 3600 },
+      { label: "minute", seconds: 60 },
+      { label: "second", seconds: 1 }
+    ];
+
+    for (const { label, seconds: s } of intervals) {
+      const count = Math.floor(seconds / s);
+      if (count >= 1) {
+        return `${count} ${label}${count > 1 ? "s" : ""} ago`;
+      }
+    }
+    return "Just now";
+  }
+
+  const file = fs.readFileSync("./.data/auraboard.txt", "utf-8").split("\n").filter((line) => line.trim() !== "");
+
+  const transform = function (u, rank) {
+return {
+  aura: u[0], username: u[1], pfp: u[2], link: "/" + u[3], rank
+}
+  }
+  res.json({
+    ok: true,
+    updated: timeAgo(file[0]),
+    top: file.slice(1).slice(0, 20).map((u, i) => transform(JSON.parse(`[${u}]`), i + 1)),
+    worst: file.slice(1).slice(-20).map((u) => transform(JSON.parse(`[${u}]`))),
+  })
+})
+
+app.post("/api/challenge", (req, res) => {
   res.json(cap.createChallenge({
     challengeCount: 64,
     challengeSize: 64,
@@ -469,13 +509,31 @@ app.post('/api/challenge', (req, res) => {
   }));
 });
 
-app.post('/api/redeem', async (req, res) => {
+app.post("/api/redeem", async (req, res) => {
   const { token, solutions } = req.body;
   if (!token || !solutions) {
     return res.status(400).json({ success: false });
   }
   res.json(await cap.redeemChallenge({ token, solutions }));
 });
+
+app.get("/api/internal/auraboard", function (req, res) {
+  const token = req.query.token;
+
+  if (!token) {
+    return res.status(400).json({ success: false });
+  }
+  if (token !== process.env.ADMIN_TOKEN) {
+    return res.status(400).json({ success: false });
+  }
+
+  delete require.cache[require.resolve("./scripts/auraboard.js")];
+  require("./scripts/auraboard.js");
+
+  res.json({
+    ok: true
+  })
+})
 
 app.get("/results/:id", generateTemplate);
 app.get("/:id", generateTemplate);
