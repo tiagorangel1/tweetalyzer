@@ -126,15 +126,15 @@ async function fetchAuraBoard() {
   const data = await (await fetch('https://corsproxy.io/?url=https://twt.tiagorangel.com/api/auraboard')).json();
 
   document.querySelector('#updated').innerHTML = `Last updated ${data.updated}<br>(updates every hour)`;
-  renderList('#top', data.top);
-  renderList('#worst', data.worst);
+  renderList('#top', data.top.slice(0, 10));
+  renderList('#top2', data.top.slice(-10));
 }
 
 function renderList(selector, items) {
   const container = document.querySelector(selector);
   container.innerHTML = '';
 
-  items.forEach(({ link, pfp, username, aura }) => {
+  items.forEach(({ link, pfp, username, aura, rank }) => {
     const el = document.createElement('a');
     el.href = `https://twt.tiagorangel.com${link}`;
     el.target = '_blank';
@@ -147,13 +147,18 @@ function renderList(selector, items) {
       img.src = "/assets/nopfp.svg"
     });
 
+    const rankEl = document.createElement('p');
+    rankEl.classList.add("rank")
+    rankEl.textContent = rank;
+
     const name = document.createElement('p');
+    name.classList.add("username")
     name.textContent = username;
 
     const auraSpan = document.createElement('span');
     auraSpan.textContent = `${aura} aura`;
 
-    el.append(img, name, auraSpan);
+    el.append(img, rankEl, name, auraSpan);
     container.appendChild(el);
   });
 }

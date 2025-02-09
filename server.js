@@ -96,9 +96,6 @@ app.post("/api/analyze", async function (req, res) {
     if (!tweet) {
       return null;
     }
-    if (!tweet?.author?.profile_bio?.description) {
-      console.error("invalid parsed tweet", JSON.stringify(tweet))
-    }
     return {
       pinned,
       text: tweet?.text,
@@ -496,8 +493,7 @@ return {
   res.json({
     ok: true,
     updated: timeAgo(file[0]),
-    top: file.slice(1).slice(0, 20).map((u, i) => transform(JSON.parse(`[${u}]`), i + 1)),
-    worst: file.slice(1).slice(-20).map((u) => transform(JSON.parse(`[${u}]`))),
+    top: file.slice(1).slice(0, 20).map((u, i) => transform(JSON.parse(`[${u}]`), i + 1))
   })
 })
 
