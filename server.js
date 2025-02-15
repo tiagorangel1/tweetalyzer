@@ -486,10 +486,11 @@ app.get("/api/auraboard", (req, res) => {
   const file = fs.readFileSync("./.data/auraboard.txt", "utf-8").split("\n").filter((line) => line.trim() !== "");
 
   const transform = function (u, rank) {
-return {
-  aura: u[0], username: u[1], pfp: u[2], link: "/" + u[3], rank
-}
+    return {
+      aura: u[0], username: u[1], pfp: u[2], link: "/" + u[3], rank
+    }
   }
+  
   res.json({
     ok: true,
     updated: timeAgo(file[0]),
