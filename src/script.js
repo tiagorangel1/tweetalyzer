@@ -24,9 +24,7 @@ let loaderInterval;
 (async function () {
   const pfps = await (await fetch("/api/pfps")).json();
 
-  elements.profilePics.innerHTML = pfps.pfps
-    .map((pfp) => `<img src="${pfp}">`)
-    .join("");
+  elements.profilePics.innerHTML = pfps.pfps.map((pfp) => `<img src="${pfp}">`).join("");
 })();
 
 async function updateUsage() {
@@ -35,9 +33,7 @@ async function updateUsage() {
   if (lastCount === usage.count) return;
   lastCount = usage.count;
 
-  elements.peopleCount.innerText = usage.count
-    .toString()
-    .replace(/(\d)(?=(\d{3})+$)/g, "$1 ");
+  elements.peopleCount.innerText = usage.count.toString().replace(/(\d)(?=(\d{3})+$)/g, "$1 ");
 }
 
 setInterval(updateUsage, 3500);
@@ -77,9 +73,7 @@ document.querySelector(".error .back").addEventListener("click", function () {
 });
 
 document.querySelector("#floating").addEventListener("solve", async function (e) {
-  const user = elements.input.value
-    .trim()
-    .replace(/@|x\.com\/|https?:\/\//g, "");
+  const user = elements.input.value.trim().replace(/@|x\.com\/|https?:\/\//g, "");
 
   if (!user.trim()) {
     elements.error.style.display = "block";
@@ -101,10 +95,18 @@ document.querySelector("#floating").addEventListener("solve", async function (e)
       },
       body: JSON.stringify({
         user,
-        token: e.detail.token
+        token: e.detail.token,
       }),
     })
   ).json();
+
+  try {
+    plausible("analyze", {
+      props: {
+        user,
+      },
+    });
+  } catch {}
 
   clearInterval(loaderInterval);
   elements.loader.style.display = "none";
@@ -120,42 +122,57 @@ document.querySelector("#floating").addEventListener("solve", async function (e)
   }
 
   location.href = `/results/${results.id}`;
-})
+});
 
 async function fetchAuraBoard() {
-  const data = await (await fetch('https://corsproxy.io/?url=https://twt.tiagorangel.com/api/auraboard')).json();
+  const data = await (
+    await fetch("https://corsproxy.io/?url=https://twt.tiagorangel.com/api/auraboard")
+  ).json();
 
-  document.querySelector('#updated').innerHTML = `Last updated ${data.updated}<br>(updates every hour)`;
-  renderList('#top', data.top.slice(0, 10));
-  renderList('#top2', data.top.slice(-10));
+  document.querySelector(
+    "#updated"
+  ).innerHTML = `Last updated ${data.updated}<br>(updates every hour)`;
+  renderList("#top", data.top.slice(0, 10));
+  renderList("#top2", data.top.slice(-10));
 }
 
 function renderList(selector, items) {
   const container = document.querySelector(selector);
-  container.innerHTML = '';
+  container.innerHTML = "";
 
   items.forEach(({ link, pfp, username, aura, rank }) => {
-    const el = document.createElement('a');
+    const el = document.createElement("a");
     el.href = `https://twt.tiagorangel.com${link}`;
-    el.target = '_blank';
-    el.className = 'user';
+    el.target = "_blank";
+    el.className = "user";
 
-    const img = document.createElement('img');
-    img.src = pfp;
-    img.alt = username;
-    img.addEventListener('error', () => {
-      img.src = "/assets/nopfp.svg"
+    el.addEventListener("click", (e) => {
+      try {
+        plausible("auraboard-click", {
+          props: {
+            user: username,
+            rank,
+          },
+        });
+      } catch {}
     });
 
-    const rankEl = document.createElement('p');
-    rankEl.classList.add("rank")
+    const img = document.createElement("img");
+    img.src = pfp;
+    img.alt = username;
+    img.addEventListener("error", () => {
+      img.src = "/assets/nopfp.svg";
+    });
+
+    const rankEl = document.createElement("p");
+    rankEl.classList.add("rank");
     rankEl.textContent = rank;
 
-    const name = document.createElement('p');
-    name.classList.add("username")
+    const name = document.createElement("p");
+    name.classList.add("username");
     name.textContent = username;
 
-    const auraSpan = document.createElement('span');
+    const auraSpan = document.createElement("span");
     auraSpan.textContent = `${aura} aura`;
 
     el.append(img, rankEl, name, auraSpan);
