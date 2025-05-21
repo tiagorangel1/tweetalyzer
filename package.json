@@ -8,11 +8,10 @@
     "forever": "pm2 start server.js --name tweetalyzer"
   },
   "dependencies": {
-    "@cap.js/server": "^1.0.4",
+    "@cap.js/server": "^1.0.13",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "express-slow-down": "^2.0.3"
+    "express-slow-down": "^2.1.0"
   },
   "repository": {
     "url": "https://github.com/tiagorangel1/tweetalyzer"

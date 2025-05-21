@@ -7,8 +7,6 @@ const fs = require("fs");
 const cors = require("cors");
 const app = express();
 
-require('dotenv').config();
-
 app.set("trust proxy", 4);
 
 app.use(
@@ -499,11 +497,7 @@ app.get("/api/auraboard", (req, res) => {
 })
 
 app.post("/api/challenge", (req, res) => {
-  res.json(cap.createChallenge({
-    challengeCount: 64,
-    challengeSize: 64,
-    challengeDifficulty: 3
-  }));
+  res.json(cap.createChallenge());
 });
 
 app.post("/api/redeem", async (req, res) => {
